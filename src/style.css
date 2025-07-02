@@ -1,0 +1,52 @@
+.navbar{
+     background: linear-gradient(0deg, #dad7dd, #8f95a2); /* violet to blue */
+  color: white;
+   
+}
+.nav-link{
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+.input-field input, textarea{
+    border: 2px;
+    background-color: rgb(235, 235, 235);
+    border-radius: 4px;
+    
+}
+.input-field label{
+    color: rgb(134, 130, 130);
+    font-weight: bold;
+}
+.button-btn{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    margin-top: 50px;
+    border: solid 1px;
+    border-radius: 4px;
+     background: linear-gradient(to right, #f4f1f7, #dae0e9);
+    color: rgb(82, 68, 68);
+    padding: 5px;
+}
+.nav-link .search-icon{
+    background-color: transparent;
+    border: 0px;
+}
+.pagination-btn{
+    border-radius: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: solid #b7b7b7 1px;
+    background-color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 50px;
+   
+    
+}
+.div-cursor{
+    cursor: pointer;
+}
