@@ -27,7 +27,10 @@ const AddForm = ({productData, productSetter}) => {
 
     const handleSubmit =(e) =>{
         e.preventDefault();
-        productSetter([...productData,newProduct])
+         const newId = Date.now()
+         const finalProduct = {...newProduct,id: newId}
+
+        productSetter([...productData, finalProduct])
         api.post('/add',newProduct)
         .then(() => {
           alert("Product added successfully")
@@ -38,8 +41,11 @@ const AddForm = ({productData, productSetter}) => {
 
   return (
     <div>
-        <div className='container my-5 '>
+        <div className='container mt-5 pb-5'>
           <div className='col-md-6 mx-auto card p-5 shadow-lg ' style={{borderRadius:'10px', border:'transparent'}}>
+             <div className="p-5 text-center">
+              <h1>Add Product</h1>
+            </div>
             <form onSubmit={handleSubmit}>
                 <div className='input-field  mb-3'>
                      <label htmlFor='product-title'>Product Title</label><br/>

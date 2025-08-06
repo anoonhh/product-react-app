@@ -6,20 +6,27 @@ import Header from "../components/Header"
 const ProductView = ({productData, productSetter}) => {
   const {id} = useParams();
   const [product, setProduct] = useState([])
+  const navi = useNavigate();
 
   useEffect(() => {
-    api.get(`/${id}`)
-    .then((res) => {
-      setProduct(res.data)
-      console.log(res.data)
-    })
-    .catch ((err) => {
-      console.error("error detected", err)
-    })
-  },[id])
+     const localProduct = productData.find((item) => item.id.toString() === id);
+    if (localProduct) {
+      setProduct(localProduct);
+      console.log("Found product in local data:", localProduct);
+    } else {
+      
+      api.get(`/${id}`)
+      .then((res) => {
+        setProduct(res.data)
+        console.log(res.data)
+      })
+      .catch ((err) => {
+        console.error("error detected", err)
+      })
+    }
+  },[id,productData,navi])
 
 
-  const navi = useNavigate();
 
   const handleUpdate = (id) =>{
       navi(`/updateform/${id}`)
@@ -27,6 +34,11 @@ const ProductView = ({productData, productSetter}) => {
 
 
   const handleRemove =(id) =>{
+
+    const isDummyProduct = parseInt(id) <= 100;
+
+    if (isDummyProduct) {
+      
       api.delete(`/${id}`)
       .then(() =>{
           const finalProducts = productData.filter((item) => item.id !== id )
@@ -37,13 +49,19 @@ const ProductView = ({productData, productSetter}) => {
       .catch((err)=> {
           console.error("Error Detected",err)
       })
+    }else{
+       // Local product, just update the state
+      const finalProducts = productData.filter((item) => item.id.toString() !== id.toString());
+      productSetter(finalProducts);
+      alert("Deleted");
+      navi('/');
+    }
+
       
   }
 
-
-
   return (
-    <div>
+    <div className="home-page pb-5">
       <Header/>
       <h1 className="text-center py-5">PRODUCT DETAIL</h1>
 

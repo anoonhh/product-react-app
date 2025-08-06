@@ -4,7 +4,7 @@ import UpdateForm from "../components/UpdateForm"
 const UpdateFormPage = ({productData,productSetter}) => {
   console.log(productData,"products page")
   return (
-    <div >
+    <div className="home-page">
         <Header/> 
         <UpdateForm productData={productData} productSetter={productSetter}/>
     </div>
